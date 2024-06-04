@@ -10,10 +10,10 @@
 <body>
 <%
       String name=(String)session.getAttribute("name");
-	  request.setCharacterEncoding("EUC-KR");
-     
+	  request.setCharacterEncoding("UTF-8");
     %>
 <h1 style="text-align: center;"> <%=name %>님 격하게 환영합니다!!!!</h1>
+
 
 </body>
 </html>

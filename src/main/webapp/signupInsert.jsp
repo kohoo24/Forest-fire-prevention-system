@@ -1,16 +1,16 @@
 <%@ page import="kr.co.kung.modelExam.MemberDAO"%>
 <%@ page import="kr.co.kung.modelExam.MemberDTO"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">src\main\webapp\signupInsert.jsp
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
     <%
     
-    request.setCharacterEncoding("EUC-KR");
+    request.setCharacterEncoding("UTF-8");
 
     
     String userid = request.getParameter("userid");

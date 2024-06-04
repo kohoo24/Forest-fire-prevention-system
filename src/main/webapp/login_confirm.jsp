@@ -7,7 +7,7 @@
 
     String uid = "test2";
     String upw = "1234";
-    String url = "jdbc:mysql://121.163.148.1/plantsdb?useUnicode=true&characterEncoding=UTF-8";
+    String url = "jdbc:mysql://121.163.148.1/plantsdb";
 
     Connection con = null;
     PreparedStatement pst = null;
