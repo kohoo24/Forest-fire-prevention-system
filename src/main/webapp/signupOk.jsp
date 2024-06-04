@@ -13,6 +13,8 @@
 	  request.setCharacterEncoding("UTF-8");
     %>
 <h1 style="text-align: center;"> <%=name %>님 격하게 환영합니다!!!!</h1>
+<a href="login_form.jsp">로그인</a>
+<a href="main.jsp">홈페이지</a>
 
 
 </body>

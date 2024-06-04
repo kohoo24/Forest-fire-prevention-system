@@ -35,7 +35,7 @@
 
     if (res == 1) {
         session.setAttribute("name", members.getName());
-        response.sendRedirect("signupOk.jsp");
+        response.sendRedirect("main.jsp");
     } else {
         response.sendRedirect("signup.jsp");
     }
