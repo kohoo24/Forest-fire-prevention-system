@@ -3,9 +3,9 @@ package kr.co.kung.modelExam;
 import java.sql.*;
 
 public class MemberDAO {
-  private String uid="root";
+  private String uid="test2";
   private String upw="1234";
-  private String url ="jdbc:mysql://localhost:3306/plantsdb";
+  private String url ="jdbc:mysql://121.163.148.1/plantsdb";
   
   private MemberDAO(){
 	  try {
