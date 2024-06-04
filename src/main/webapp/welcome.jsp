@@ -15,6 +15,5 @@
     <a href="main.jsp">홈페이지</a>
     <a href="logout.jsp">로그아웃</a>
     <a href="memberOut.jsp">회원탈퇴</a>
-    <h2>아</h2>
 </body>
 </html>
