@@ -1,19 +1,38 @@
-<%@page import="kr.co.kung.modelExam.MemberDAO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="kr.co.kung.modelExam.MemberDAO"%>
+<%@ page import="kr.co.kung.modelExam.MemberDTO"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="EUC-KR">src\main\webapp\signupInsert.jsp
 <title>Insert title here</title>
 </head>
 <body>
-    <jsp:useBean id="members" class="kr.co.kung.modelExam.MemberDTO"/>
-    <jsp:setProperty name="members" property="*"/>
-    
     <%
+    
+    request.setCharacterEncoding("EUC-KR");
+
+    
+    String userid = request.getParameter("userid");
+    String pw = request.getParameter("pw");
+    String name = request.getParameter("name");
+    String phone = request.getParameter("phone");
+    String address = request.getParameter("address");
+    String email = request.getParameter("email");
+
+
+    MemberDTO members = new MemberDTO();
+    members.setUserid(userid);
+    members.setPw(pw);
+    members.setName(name);
+    members.setPhone(phone);
+    members.setAddress(address);
+    members.setEmail(email);
+
+   
     MemberDAO dao = MemberDAO.getIns();
-    System.out.println("성공");
     int res = dao.Insert(members);
+
     if (res == 1) {
         session.setAttribute("name", members.getName());
         response.sendRedirect("signupOk.jsp");
