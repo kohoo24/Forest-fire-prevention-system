@@ -25,6 +25,7 @@ function validateForm() {
 </script>
 </head>
 <body>
+<a href="main.jsp">Druid</a>
 <form name="loginForm" action="login_confirm.jsp" method="post" onsubmit="return validateForm()">
   
   <label>
@@ -35,7 +36,6 @@ function validateForm() {
   </label><br>
   <input type="submit" value="로그인"/>
   <a href="signup.jsp">회원가입</a>
-
 </form>
 </body>
 </html>
