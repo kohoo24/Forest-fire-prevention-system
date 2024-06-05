@@ -55,6 +55,63 @@ public class MemberDAO {
 	  
   }
   
-  
-  
+  public MemberDTO getMember(String userid) {
+      String sql = "SELECT * FROM user WHERE userid = ?";
+      Connection con = null;
+      PreparedStatement pst = null;
+      ResultSet rs = null;
+      MemberDTO member = null;
+
+      try {
+          con = DriverManager.getConnection(url, uid, upw);
+          pst = con.prepareStatement(sql);
+          pst.setString(1, userid);
+          rs = pst.executeQuery();
+
+          if (rs.next()) {
+              member = new MemberDTO();
+              member.setUserid(rs.getString("userid"));
+              member.setPw(rs.getString("pw"));
+              member.setName(rs.getString("name"));
+              member.setPhone(rs.getString("phone"));
+              member.setAddress(rs.getString("address"));
+              member.setEmail(rs.getString("email"));
+          }
+      } catch (SQLException e) {
+          e.printStackTrace();
+      } finally {
+          try {
+              if (rs != null) rs.close();
+              if (pst != null) pst.close();
+              if (con != null) con.close();
+          } catch (SQLException e) {
+              e.printStackTrace();
+          }
+      }
+
+      return member;
+  }
+  public int updateUser(String userid, String field, String newValue) {
+      String sql = "UPDATE user SET " + field + " = ? WHERE userid = ?";
+      Connection con = null;
+      PreparedStatement pst = null;
+      int res = 0;
+      try {
+          con = DriverManager.getConnection(url, uid, upw);
+          pst = con.prepareStatement(sql);
+          pst.setString(1, newValue);
+          pst.setString(2, userid);
+          res = pst.executeUpdate();
+      } catch (SQLException e) {
+          e.printStackTrace();
+      } finally {
+          try {
+              if (pst != null) pst.close();
+              if (con != null) con.close();
+          } catch (SQLException e) {
+              e.printStackTrace();
+          }
+      }
+      return res;
+  }
 }
