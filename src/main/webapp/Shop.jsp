@@ -1,3 +1,6 @@
+<%@page import="kr.co.kung.modelExam.ProductsDTO"%>
+<%@page import="java.util.List"%>
+<%@page import="kr.co.kung.modelExam.ProductsDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,42 +15,31 @@ String name = (String)session.getAttribute("name");
 %>
 </head>
 <body>
-<header>
-  <div class="top-bar">
-    <p>create by. hohyun, giwan, eunsu</p>
-  </div>
-  <div class="nav-bar">
-    <h1 class="logo">DRUID</h1>
-    <div class="search-bar">
-      <input type="text" placeholder="Search">
-      <button>🔍</button>
-    </div>
-    <div class="auth-buttons">
-      <% if(session.getAttribute("userid") == null) { %>
-        <form action="login_form.jsp" method="post">
-          <button type="submit">Login</button>
-        </form>
-        <form action="signup.jsp" method="post">
-          <button type="submit">Sign up</button>
-        </form>
-      <% } else { %>
-      	<a href="myinfo.jsp"><%=name %>님 환영합니다.</a>
-        <form action="logout.jsp" method="post">
-          <button type="submit">Logout</button>
-        </form>
-      <% } %>
-    </div>
-  </div>
-</header>
-
-<nav class="main-nav">
-  <a href="Category.jsp">Category</a>
-  <a href="main.jsp">Home</a>
-  <a href="Shop.jsp">Shop</a>
-  <a href="Contact_Us.jsp">Contact Us</a>
-</nav>
-
-
+<jsp:include page="header.jsp"/>
+<table>
+    
+        <tr>
+            <th>이름</th> <!-- 테이블 헤더: Plant Name -->
+            <th>내용</th> <!-- 테이블 헤더: Description -->
+            <th>가격</th> <!-- 테이블 헤더: Price -->
+            <th>재고</th> <!-- 테이블 헤더: Stock -->
+        </tr>
+        <%
+            ProductsDAO dao = ProductsDAO.getIns(); // Singleton 인스턴스 가져오기
+            List<ProductsDTO> productList = dao.getAllProducts(); // 모든 제품 목록 가져오기
+            
+            for (ProductsDTO product : productList) { // 제품 목록 반복
+        %>
+        <tr>
+            <td><%= product.getPlantsname() %></td> <!-- 제품 이름 출력 -->
+            <td><%= product.getDescription() %></td> <!-- 제품 설명 출력 -->
+            <td><%= product.getPrice() %>원</td> <!-- 제품 가격 출력 -->
+            <td><%= product.getStock() %></td> <!-- 제품 재고 출력 -->
+        </tr>
+        <%
+            }
+        %>
+    </table>
 </body>
 </html>
 
