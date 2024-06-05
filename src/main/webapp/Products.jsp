@@ -7,6 +7,7 @@
     <title>Plant List</title> 
 </head>
 <body>
+<table>
     <h1>Plant List</h1> 
         <tr>
             <th>Plant Name</th> <!-- 테이블 헤더: Plant Name -->
