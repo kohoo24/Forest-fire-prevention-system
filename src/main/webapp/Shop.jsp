@@ -58,9 +58,8 @@ String name = (String)session.getAttribute("name");
         String plantsname = product.getPlantsname(); // 제품의 고정 키(예: plantsname) 가져오기
         String imageUrl = "image/" + plantsname + ".jpg"; // 이미지 경로 동적 생성
         
-        // 나머지 코드...
+       
 %>
-    <!-- 이미지 출력 등을 위한 HTML 코드 -->
     <div class="product-card">
         <img src="<%= imageUrl %>" alt="<%= plantsname %>" class="product-img">
         <div class="product-name"><%= plantsname %></div>
