@@ -31,7 +31,7 @@ public class ProductsDAO {
    
    // 데이터베이스에 ProductsDTO 객체를 삽입하는 메서드
    public int Insert(ProductsDTO products) {
-      String sql = "INSERT INTO products (plantsname, description, price, stock, imageUrl) VALUES(?,?,?,?,?)"; // SQL 삽입 명령문
+      String sql = "INSERT INTO products (plantsname, description, price, stock) VALUES(?,?,?,?)"; // SQL 삽입 명령문
       Connection con = null;
       PreparedStatement pst = null;
       int res = 0;
@@ -43,7 +43,6 @@ public class ProductsDAO {
          pst.setString(2, products.getDescription()); // 두 번째 매개변수로 description 설정
          pst.setInt(3, products.getPrice()); // 세 번째 매개변수로 price 설정
          pst.setInt(4, products.getStock()); // 네 번째 매개변수로 stock 설정
-         pst.setString(5, products.getImageUrl()); // 다섯 번째 매개변수로 imageUrl 설정
          res = pst.executeUpdate(); // SQL 명령문 실행
       } catch (Exception e) {
          e.printStackTrace(); // 예외 발생 시 스택 트레이스 출력
@@ -77,7 +76,6 @@ public class ProductsDAO {
             product.setDescription(rs.getString("description")); // description 설정
             product.setPrice(rs.getInt("price")); // price 설정
             product.setStock(rs.getInt("stock")); // stock 설정
-            product.setImageUrl(rs.getString("imageUrl")); // imageUrl 설정
             list.add(product); // 리스트에 제품 추가
          }
       } catch (Exception e) {

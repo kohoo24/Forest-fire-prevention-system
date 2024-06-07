@@ -7,13 +7,12 @@ public class ProductsDTO {
     private int stock;
     private String imageUrl; // 이미지 경로 필드 추가
     
-    public ProductsDTO(String plantsname, String description, int price, int stock, String imageUrl) {
+    public ProductsDTO(String plantsname, String description, int price, int stock) {
 		super();
 		this.plantsname = plantsname;
 		this.description = description;
 		this.price = price;
 		this.stock = stock;
-		this.imageUrl = imageUrl;
 	}
     
     public ProductsDTO() {
@@ -51,13 +50,5 @@ public class ProductsDTO {
 
     public void setStock(int stock) {
         this.stock = stock;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
     }
 }
