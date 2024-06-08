@@ -41,7 +41,6 @@ String name = (String)session.getAttribute("name");
 </header>
 
 <nav class="main-nav">
-  <a href="Category.jsp">Category</a>
   <a href="main.jsp">Home</a>
   <a href="Shop.jsp">Shop</a>
   <a href="Contact_Us.jsp">Contact Us</a>

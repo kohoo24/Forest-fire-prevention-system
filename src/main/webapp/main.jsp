@@ -22,16 +22,6 @@ function checkLoggedIn() {
     <a href="#" onclick="checkLoggedIn()">
       <img src="image/banner.jpg" width="1900" height="746">
     </a>
-
-  <section class="category-section">
-    <h2>Category Of Plants</h2>
-    <div class="categories">
-      <div class="category-item"></div>
-      <div class="category-item"></div>
-      <div class="category-item"></div>
-      <div class="category-item"></div>
-    </div>
-  </section>
   
 </main>
 </body>

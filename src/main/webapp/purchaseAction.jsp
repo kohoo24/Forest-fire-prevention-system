@@ -25,3 +25,7 @@
         out.println("<p>구매할 수량이 재고보다 많습니다.</p>");
     }
 %>
+<a href="main.jsp">Druid</a>
+<a href="Shop.jsp">Shop</a>
+<a href="profile.jsp">profile</a>
+
