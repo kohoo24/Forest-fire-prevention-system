@@ -31,7 +31,7 @@ public class ProductsDAO {
    
    // 데이터베이스에 ProductsDTO 객체를 삽입하는 메서드
    public int Insert(ProductsDTO products) {
-      String sql = "INSERT INTO products VALUES(?,?,?,?)"; // SQL 삽입 명령문
+      String sql = "INSERT INTO products (plantsname, description, price, stock) VALUES(?,?,?,?)"; // SQL 삽입 명령문
       Connection con = null;
       PreparedStatement pst = null;
       int res = 0;
@@ -71,7 +71,7 @@ public class ProductsDAO {
          rs = pst.executeQuery(); // SQL 명령문 실행 및 결과 집합 얻기
          
          while (rs.next()) { // 결과 집합에서 다음 행으로 이동
-            ProductsDTO product = new ProductsDTO(); // 새 ProductsDTO 객체 생성
+            ProductsDTO product = new ProductsDTO();// 새 ProductsDTO 객체 생성
             product.setPlantsname(rs.getString("plantsname")); // plantsname 설정
             product.setDescription(rs.getString("description")); // description 설정
             product.setPrice(rs.getInt("price")); // price 설정
@@ -90,5 +90,40 @@ public class ProductsDAO {
          }
       }
       return list; // 제품 목록 반환
+   }
+
+   // plantsname으로 특정 제품을 가져오는 메서드 추가
+   public ProductsDTO getProductByPlantsname(String plantsname) {
+      ProductsDTO product = null; // 반환할 ProductsDTO 객체
+      String sql = "SELECT * FROM products WHERE plantsname = ?"; // SQL 선택 명령문
+      Connection con = null;
+      PreparedStatement pst = null;
+      ResultSet rs = null;
+      
+      try {
+         con = DriverManager.getConnection(url, uid, upw); // 데이터베이스 연결
+         pst = con.prepareStatement(sql); // SQL 명령문 준비
+         pst.setString(1, plantsname); // 첫 번째 매개변수로 plantsname 설정
+         rs = pst.executeQuery(); // SQL 명령문 실행 및 결과 집합 얻기
+         
+         if (rs.next()) { // 결과 집합에서 다음 행으로 이동
+            product = new ProductsDTO(); // 새 ProductsDTO 객체 생성
+            product.setPlantsname(rs.getString("plantsname")); // plantsname 설정
+            product.setDescription(rs.getString("description")); // description 설정
+            product.setPrice(rs.getInt("price")); // price 설정
+            product.setStock(rs.getInt("stock")); // stock 설정
+         }
+      } catch (Exception e) {
+         e.printStackTrace(); // 예외 발생 시 스택 트레이스 출력
+      } finally {
+         try {
+            if (rs != null) rs.close(); // ResultSet 종료
+            if (pst != null) pst.close(); // PreparedStatement 종료
+            if (con != null) con.close(); // 연결 종료
+         } catch (Exception e) {
+            e.printStackTrace(); // 예외 발생 시 스택 트레이스 출력
+         }
+      }
+      return product; // 특정 제품 반환
    }
 }

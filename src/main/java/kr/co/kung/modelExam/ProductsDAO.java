@@ -126,4 +126,61 @@ public class ProductsDAO {
       }
       return product; // 특정 제품 반환
    }
+   
+
+// 데이터베이스에 구매 내역을 저장하는 메서드
+public boolean purchaseProduct(String userid, String plantsname, int quantity) {
+    Connection con = null;
+    PreparedStatement pst = null;
+    boolean success = false;
+    try {
+        con = DriverManager.getConnection(url, uid, upw);
+        con.setAutoCommit(false); // 자동 커밋을 비활성화하여 트랜잭션 관리
+
+        // 구매 내역을 저장하기 위한 SQL
+        String sql = "INSERT INTO buy (userid, plants, stock) VALUES (?, ?, ?)";
+        pst = con.prepareStatement(sql);
+        pst.setString(1, userid);
+        pst.setString(2, plantsname);
+        pst.setInt(3, quantity);
+        int result = pst.executeUpdate();
+        if (result > 0) {
+            // 제품의 재고를 감소시키는 SQL
+            String updateSql = "UPDATE products SET stock = stock - ? WHERE plantsname = ?";
+            pst = con.prepareStatement(updateSql);
+            pst.setInt(1, quantity);
+            pst.setString(2, plantsname);
+            int updateResult = pst.executeUpdate();
+            if (updateResult > 0) {
+                con.commit(); // 트랜잭션 커밋
+                success = true;
+            } else {
+                con.rollback(); // 트랜잭션 롤백
+            }
+        } else {
+            con.rollback(); // 트랜잭션 롤백
+        }
+    } catch (SQLException e) {
+        try {
+            if (con != null) {
+                con.rollback(); // 트랜잭션 롤백
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        e.printStackTrace();
+    } finally {
+        try {
+            if (pst != null) pst.close();
+            if (con != null) {
+                con.setAutoCommit(true); // 다음에 사용할 수 있도록 자동 커밋 활성화
+                con.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    return success;
+}
+
 }

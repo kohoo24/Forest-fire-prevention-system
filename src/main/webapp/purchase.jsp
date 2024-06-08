@@ -45,6 +45,8 @@
             <div class="product-stock">재고: <%= product.getStock() %>개</div>
             <form action="purchaseAction.jsp" method="post">
                 <input type="hidden" name="plantsname" value="<%= plantsname %>">
+                <label for="quantity">수량:</label>
+                <input type="number" id="quantity" name="quantity" min="1" max="<%= product.getStock() %>" required>
                 <button type="submit">구매하기</button>
             </form>
         </div>
