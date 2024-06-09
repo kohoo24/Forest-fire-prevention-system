@@ -5,29 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>찾아 오시는 길</title>
-
-<style>.container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-}
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f8f0;
-    }
-iframe {
-    border: 0;
-    width: 100%;
-    height: 450px;
-}
-h1 , h2 {
-    color: #333;
-    text-align: center;
-}</style>
+<link rel="stylesheet" href="style3.css">
 </head>
 <body>
 
