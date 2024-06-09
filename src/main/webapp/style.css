@@ -61,3 +61,22 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
+.title2 {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  color: #4caf50;
+  text-decoration: none;
+}
+.title1 {
+  position: absolute;
+  top: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  color: #4caf50;
+  text-decoration: none;
+}

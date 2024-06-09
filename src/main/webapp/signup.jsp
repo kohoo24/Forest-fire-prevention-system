@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<a href="main.jsp">Druid</a>
+<a class="title2" href="main.jsp">Druid</a>
 <form action="signupInsert.jsp" method="post">
   
   <label>

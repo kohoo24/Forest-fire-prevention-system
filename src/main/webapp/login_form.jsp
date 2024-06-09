@@ -25,7 +25,7 @@ function validateForm() {
 </script>
 </head>
 <body>
-<a href="main.jsp">Druid</a>
+<a class="title1" href="main.jsp">Druid</a>
 <form name="loginForm" action="login_confirm.jsp" method="post" onsubmit="return validateForm()">
   
   <label>
