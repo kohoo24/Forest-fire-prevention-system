@@ -12,18 +12,17 @@
 <head>
 <meta charset="UTF-8">
 <title>프로필 페이지</title>
+<link rel="stylesheet" href="style3.css">
 </head>
 <body>
 <jsp:include page="header.jsp"/>
-<div style="margin: 20px auto; width: 50%;">
+<div class="container">
     <h2 style="text-align: center;">내 정보 변경</h2>
-    
-    <%-- 사용자의 정보를 가져오는 부분 --%>
-    <% 
+    <%
         String userId = (String) session.getAttribute("userid");
         MemberDAO memberDAO = MemberDAO.getIns();
         MemberDTO user = memberDAO.getMember(userId);
-        
+
         if (user != null) {
     %>
     <div style="margin-bottom: 10px;">
@@ -34,22 +33,20 @@
         <strong>Email:</strong> <%= user.getEmail() %> (<a href="editEmail.jsp">변경</a>)<br>
     </div>
     <% } else { %>
-    <div style="text-align: center; color: red;">
+    <div class="error">
         User not found.
     </div>
     <% } %>
-
-    <%-- 사용자의 구매 내역을 가져오는 부분 --%>
     <h2 style="text-align: center;">내 구매 내역</h2>
-    <table border="1" style="width: 100%;">
+    <table class="table">
         <tr>
             <th>제품명</th>
             <th>수량</th>
         </tr>
-        <% 
+        <%
             ProductsDAO productsDAO = ProductsDAO.getIns();
-        	BuyDAO buyDAO = BuyDAO.getIns();
-        	List<BuyDTO> buyList = buyDAO.getBuyList(userId);
+            BuyDAO buyDAO = BuyDAO.getIns();
+            List<BuyDTO> buyList = buyDAO.getBuyList(userId);
             if (buyList != null && !buyList.isEmpty()) {
                 for (BuyDTO buy : buyList) {
         %>
@@ -62,7 +59,7 @@
             } else { 
         %>
         <tr>
-            <td colspan="3" style="text-align: center;">구매 내역이 없습니다.</td>
+            <td colspan="2" style="text-align: center;">구매 내역이 없습니다.</td>
         </tr>
         <% } %>
     </table>

@@ -111,26 +111,4 @@ header {
   background-color: #45a049;
 }
 
-.category-section {
-  padding: 20px;
-  text-align: center;
-}
-
-.category-section h2 {
-  font-size: 2em;
-  margin-bottom: 20px;
-}
-
-.categories {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
-
-.category-item {
-  background-color: #e0e0e0;
-  width: 45%;
-  height: 150px;
-  margin: 10px 0;
-}
 
