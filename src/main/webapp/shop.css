@@ -1,0 +1,57 @@
+/* 기본 스타일 리셋 */
+body, h1, h2, h3, h4, h5, h6, p, ul, li, div {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 메인 컨테이너가 전체 폭을 차지하도록 설정 */
+.container {
+  width: 100%;
+  padding: 20px;
+}
+
+/* 각 제품 아이템 스타일 */
+.product-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 20px 0;
+  text-decoration: none;
+  color: inherit;
+}
+
+.product-image {
+  flex: 0 0 150px;
+  max-width: 150px;
+}
+
+.product-details {
+  flex: 1;
+  margin-left: 20px;
+}
+
+.product-name {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.product-description {
+  font-size: 1em;
+  color: #777;
+}
+
+.product-price {
+  font-size: 1.5em;
+  color: red;
+}
+
+img {
+  max-width: 100%;
+}
+
+.product-price-container {
+  text-align: right;
+  flex: 0 0 150px;
+}
